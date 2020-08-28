@@ -1,0 +1,98 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: 'Fira Sans', sans-serif
+}
+
+p {
+  line-height: 26px;
+}
+
+a,
+a:hover {
+  color: #004699 !important;
+}
+
+ul li {
+  margin: 0;
+  padding: 0;
+  line-height: 26px;
+  text-indent: 0;
+}
+
+ul {
+  padding-left: 18px;
+}
+
+dd {
+  margin: 0;
+}
+
+#app {
+  min-height: 100%;
+  min-width: 100%;
+  background-color: #e5e5e5;
+
+  .content.container,
+  .content.container-fluid {
+    padding-bottom: 20px;
+    min-height: 60vh;
+  }
+
+  .app-container {
+    padding: 0;
+    background-color: #fff;
+  }
+
+  .container {
+    width: auto;
+  }
+}
+
+h3 {
+  font-size: 1.25rem;
+  line-height: 1.4em;
+}
+
+h4 {
+  font-size: 1.125rem;
+  line-height: 1.55556em;
+}
+
+main {
+  margin-top: 20px;
+
+  @media screen and (max-width: 576px) {
+    margin-top: 0;
+  }
+}
+
+@media print {
+  html,
+  body {
+    height: 100%;
+  }
+
+  @page {
+    size: A4;
+    margin-left: 1cm;
+    margin-right: 1cm;
+  }
+
+  // Reset the flex model to allow printig on more than one page
+  .row {
+    display: block;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .page-break {
+    page-break-after: always;
+  }
+}

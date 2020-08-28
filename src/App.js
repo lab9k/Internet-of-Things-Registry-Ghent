@@ -1,26 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import './global.scss';
+import 'leaflet/dist/leaflet';
+import 'leaflet/dist/leaflet.css';
+import 'leaflet.markercluster/dist/MarkerCluster.css';
+import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import LeafletMap from '../src/containers/LeafletMap/index'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export class App extends React.PureComponent {
+  render() {
+    return (
+        <div className="container">
+           <LeafletMap/>
+        </div>
+    )
+  }
 }
 
 export default App;
