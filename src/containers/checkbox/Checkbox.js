@@ -1,38 +1,38 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react"
+import PropTypes from "prop-types"
 
-import './_checkbox.scss';
-import { ReactComponent as TickIcon } from '../../icons/icon-tick.svg';
+import "./_checkbox.scss"
+import { ReactComponent as TickIcon } from "../../icons/icon-tick.svg"
 
 class Checkbox extends React.Component {
   static evaluateChecked(checked) {
-    if (typeof checked === 'function') {
-      return !!checked();
+    if (typeof checked === "function") {
+      return !!checked()
     }
-    return !!checked;
+    return !!checked
   }
 
   constructor(props) {
-    super(props);
-
+    super(props)
+    const { checked } = this.props
     this.state = {
-      checked: Checkbox.evaluateChecked(this.props.checked)
-    };
+      checked: Checkbox.evaluateChecked(checked),
+    }
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this)
   }
 
   static getDerivedStateFromProps(nextProps) {
     return {
-      checked: Checkbox.evaluateChecked(nextProps.checked)
-    };
+      checked: Checkbox.evaluateChecked(nextProps.checked),
+    }
   }
 
   handleChange(event) {
-    this.setState({
-      checked: !this.state.checked
-    });
-    this.props.onChange(event);
+    this.setState((prevState) => {
+      return { checked: !prevState.checked }
+    })
+    this.props.onChange(event)
   }
 
   render() {
@@ -47,19 +47,19 @@ class Checkbox extends React.Component {
         />
         <TickIcon />
       </span>
-    );
+    )
   }
 }
 
 Checkbox.defaultProps = {
   checked: false,
-  onChange: () => {}
-};
+  onChange: () => {},
+}
 
 Checkbox.propTypes = {
   checked: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   name: PropTypes.string.isRequired,
-  onChange: PropTypes.func
-};
+  onChange: PropTypes.func,
+}
 
-export default Checkbox;
+export default Checkbox
