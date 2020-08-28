@@ -1,27 +1,26 @@
-import { Component } from 'react';
-import { withLeaflet } from 'react-leaflet';
-import Locate from 'leaflet.locatecontrol';
-
+import { Component } from "react"
+import { withLeaflet } from "react-leaflet"
+import Locate from "leaflet.locatecontrol"
 
 class LocateControl extends Component {
   componentDidMount() {
     // eslint-disable-next-line react/prop-types
-    const { options, startDirectly } = this.props;
+    const { options, startDirectly } = this.props
     // eslint-disable-next-line react/prop-types
-    const { map } = this.props.leaflet;
+    const { map } = this.props.leaflet
 
-    const lc = new Locate(options);
-    lc.addTo(map);
+    const lc = new Locate(options)
+    lc.addTo(map)
 
     if (startDirectly) {
       // request location update and set location
-      lc.start();
+      lc.start()
     }
   }
 
   render() {
-    return null;
+    return null
   }
 }
 
-export default withLeaflet(LocateControl);
+export default withLeaflet(LocateControl)

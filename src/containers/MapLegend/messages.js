@@ -3,28 +3,28 @@
  *
  * This contains all the text for the MapLegend component.
  */
-import { defineMessages } from 'react-intl';
+import { defineMessages } from "react-intl"
 
-export const scope = 'IoTRegister.components.MapLegend';
+export const scope = "IoTRegister.components.MapLegend"
 
 export default defineMessages({
   header: {
     id: `${scope}.header`,
-    defaultMessage: 'Devices',
+    defaultMessage: "Devices",
   },
   title: {
     id: `${scope}.title`,
-    defaultMessage: 'Map Legend'
+    defaultMessage: "Map Legend",
   },
   hide: {
     id: `${scope}.hide`,
-    defaultMessage: 'Hide Legend',
+    defaultMessage: "Hide Legend",
   },
   show: {
     id: `${scope}.show`,
-    defaultMessage: 'Show Legend',
+    defaultMessage: "Show Legend",
   },
   devices: {
     id: `${scope}.devices`,
   },
-});
+})

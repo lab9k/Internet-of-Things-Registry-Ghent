@@ -1,64 +1,84 @@
-import React from 'react';
-import { Card } from 'reactstrap';
-import { Marker, Popup } from 'react-leaflet';
-import L from 'leaflet';
-import PropTypes from 'prop-types';
-import './style.scss';
-import messages from './messages';
-import { getTypeMarker } from '../../services/api/marker';
+import React from "react"
+import { Card } from "reactstrap"
+import { Marker, Popup } from "react-leaflet"
+import L from "leaflet"
+import PropTypes from "prop-types"
+import "./style.scss"
+import messages from "./messages"
+import { getTypeMarker } from "../../services/api/marker"
 
 const createIcon = (category, type) =>
   new L.Icon({
-    ...(getTypeMarker(category, type))
-  });
+    ...getTypeMarker(category, type),
+  })
 
-function formatMessage(s){
-  return s.defaultMessage;
+function formatMessage(s) {
+  return s.defaultMessage
 }
 // eslint-disable-next-line no-redeclare
 const LMarker = (props) => {
-  const device = props.device;
-  const deviceIcon = createIcon(device.category, device.type);
-  const devicePosition = [device.latitude, device.longitude];
-  const dataProcessingLabel = formatMessage(messages.data_processing);
-  const dataOwnerLabel = formatMessage(messages.data_owner);
-  const retentionLabel = formatMessage(messages.retention);
-  const linkLabel = formatMessage(messages.link_text);
+  const { device } = props
+  const deviceIcon = createIcon(device.category, device.type)
+  const devicePosition = [device.latitude, device.longitude]
+  const dataProcessingLabel = formatMessage(messages.data_processing)
+  const dataOwnerLabel = formatMessage(messages.data_owner)
+  const retentionLabel = formatMessage(messages.retention)
+  const linkLabel = formatMessage(messages.link_text)
   return (
     <Marker position={devicePosition} icon={deviceIcon} key={device.id}>
       <Popup>
         <Card>
           <div className="card-body">
-            <div className="card-title border-bottom mb-1"><h3><b>{device.title}</b></h3></div>
+            <div className="card-title border-bottom mb-1">
+              <h3>
+                <b>{device.title}</b>
+              </h3>
+            </div>
             <div className="col px-0">
               <div className="row pb-0 border-bottom">
                 <div className="col">
-                  <h3><i>{device.category}</i></h3>
+                  <h3>
+                    <i>{device.category}</i>
+                  </h3>
                 </div>
                 <div className="col">
-                  <h3><i>{device.type}</i></h3>
+                  <h3>
+                    <i>{device.type}</i>
+                  </h3>
                 </div>
               </div>
               <div className="data-processing border-bottom pb-1 pl-1 pr-1 pt-2 mt-1 rounded">
-                <h6 className="text-muted card-subtitle mb-2">{dataProcessingLabel}</h6>
+                <h6 className="text-muted card-subtitle mb-2">
+                  {dataProcessingLabel}
+                </h6>
                 <p className="card-text mt-auto">{device.dataprocessing}</p>
               </div>
               <div className="data-processing border-bottom pb-1 pl-1 pr-1 pt-2 mt-1 rounded">
-                <h6 className="text-muted card-subtitle mb-2">{dataOwnerLabel}</h6>
-                <p className="card-text mt-auto" style={{ fontSize: '14px' }}>{device.dataowner}</p>
+                <h6 className="text-muted card-subtitle mb-2">
+                  {dataOwnerLabel}
+                </h6>
+                <p className="card-text mt-auto" style={{ fontSize: "14px" }}>
+                  {device.dataowner}
+                </p>
               </div>
               <div className="data-processing border-bottom pb-1 pl-1 pr-1 pt-2 mt-1 mb-1 rounded">
-                <h6 className="text-muted card-subtitle mb-2">{retentionLabel}</h6>
-                <p className="card-text mt-auto" style={{ fontSize: '14px' }}>{device.retention}</p>
+                <h6 className="text-muted card-subtitle mb-2">
+                  {retentionLabel}
+                </h6>
+                <p className="card-text mt-auto" style={{ fontSize: "14px" }}>
+                  {device.retention}
+                </p>
               </div>
-              <a className="card-link mt-2" href={device.link}>{linkLabel}</a>
+              <a className="card-link mt-2" href={device.link}>
+                {linkLabel}
+              </a>
             </div>
           </div>
         </Card>
       </Popup>
     </Marker>
-  );
-};
+  )
+}
 
 LMarker.propTypes = {
   device: PropTypes.shape({
@@ -72,7 +92,7 @@ LMarker.propTypes = {
     link: PropTypes.string,
     type: PropTypes.string,
     retention: PropTypes.string,
-  }).isRequired
-};
+  }).isRequired,
+}
 
-export default LMarker;
+export default LMarker

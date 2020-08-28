@@ -1,79 +1,81 @@
-import React from 'react';
-import { Map } from 'react-leaflet';
-import WMTSTileLayer from 'react-leaflet-wmts';
-import { getDevices } from '../../services/api/iot';
+import React from "react"
+import { Map } from "react-leaflet"
+import WMTSTileLayer from "react-leaflet-wmts"
+import { getDevices } from "../../services/api/iot"
 
+import MapLegend from "../MapLegend"
+import LMarker from "../LeafletMarker"
 
-import MapLegend from '../MapLegend';
-import LMarker from '../LeafletMarker';
+import "./style.scss"
+import Geocoder from "../Geocoder"
+import SMarker from "../SearchMarker"
+import { Category, Type } from "./Category"
 
-import './style.scss';
-import Geocoder from '../Geocoder';
-import SMarker from '../SearchMarker';
-import { Category, Type } from './Category';
-
-import LocateControl from '../locationControl';
-
+import LocateControl from "../locationControl"
 
 class LMap extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       devices: [],
       categories: [],
-      center: [parseFloat(process.env.REACT_APP_MAP_CENTER_LATITUDE),
-        parseFloat(process.env.REACT_APP_MAP_CENTER_LONGITUDE)],
+      center: [
+        parseFloat(process.env.REACT_APP_MAP_CENTER_LATITUDE),
+        parseFloat(process.env.REACT_APP_MAP_CENTER_LONGITUDE),
+      ],
       zoom: 14,
-      searchMarker: undefined
-    };
-    this.setViewPort = this.setViewPort.bind(this);
+      searchMarker: undefined,
+    }
+    this.setViewPort = this.setViewPort.bind(this)
   }
 
   componentDidMount() {
     getDevices()
       .then((dev) => this.setState({ devices: [...dev] }))
-      .then(() => this.loadCategories());
+      .then(() => this.loadCategories())
   }
 
   get enabledCategories() {
     return Object.entries(this.state.categories)
       .filter(([, value]) => value.enabled)
-      .map(([, value]) => value);
+      .map(([, value]) => value)
   }
 
   get enabledTypes() {
-    return this.enabledCategories.flatMap((t) => t.types).filter((t) => t.enabled);
+    return this.enabledCategories
+      .flatMap((t) => t.types)
+      .filter((t) => t.enabled)
   }
 
   get enabledDevices() {
-    const enabledTypes = this.enabledTypes.map((t) => t.name);
+    const enabledTypes = this.enabledTypes.map((t) => t.name)
     return this.state.devices.filter(
-          (device) => this.enabledCategories
-              .map((cat) => cat.name)
-              .includes(device.category) && enabledTypes.includes(device.type));
+      (device) =>
+        this.enabledCategories
+          .map((cat) => cat.name)
+          .includes(device.category) && enabledTypes.includes(device.type)
+    )
   }
 
   setViewPort(center) {
     this.setState({
       center,
       zoom: 19,
-      searchMarker: center
-    });
+      searchMarker: center,
+    })
   }
 
   loadCategories() {
-    const tax = [];
-    this.state.devices
-      .forEach((d) => {
-        if (!tax[d.category]) {
-          tax[d.category] = new Category(d.category);
-        } if (!tax[d.category].types.map((t) => t.name).includes(d.type)) {
-          tax[d.category].types.push(new Type(d.type));
-        }
+    const tax = []
+    this.state.devices.forEach((d) => {
+      if (!tax[d.category]) {
+        tax[d.category] = new Category(d.category)
       }
-      );
-    console.log(tax);
-    this.setState({ categories: tax });
+      if (!tax[d.category].types.map((t) => t.name).includes(d.type)) {
+        tax[d.category].types.push(new Type(d.type))
+      }
+    })
+    this.setState({ categories: tax })
   }
 
   makeCategory(t) {
@@ -81,53 +83,54 @@ class LMap extends React.Component {
       category: t,
       enabled: true,
       visible: true,
-    };
+    }
   }
+
   // reacts to the checkmark being toggled on and off
   toggleCategory(key) {
-    const currentCategories = this.state.categories;
-    currentCategories[key].enabled = !currentCategories[key].enabled;
+    const currentCategories = this.state.categories
+    currentCategories[key].enabled = !currentCategories[key].enabled
     // eslint-disable-next-line no-param-reassign
-    currentCategories[key].types.forEach((t) => { t.enabled = currentCategories[key].enabled; });
-    this.setState({ categories: currentCategories });
+    currentCategories[key].types.forEach((t) => {
+      t.enabled = currentCategories[key].enabled
+    })
+    this.setState({ categories: currentCategories })
   }
+
   // reacts to the list of types being made visible or not
   toggleCategoryTypesVisible(key) {
-    const categories = this.state.categories;
-    categories[key].visible = !categories[key].visible;
-    this.setState({ categories });
+    const { categories } = this.state
+    categories[key].visible = !categories[key].visible
+    this.setState({ categories })
   }
+
   // reacts to the checkmark being toggled on and off
   toggleType(category, type) {
-    const currentType = category.types.find((t) => t.name === type.name);
-    currentType.enabled = !currentType.enabled;
-    this.setState({ categories: this.state.categories });
+    const currentType = category.types.find((t) => t.name === type.name)
+    currentType.enabled = !currentType.enabled
+    this.setState({ categories: this.state.categories })
   }
 
   render() {
     const locateOptions = {
-      position: 'topleft',
+      position: "topleft",
       strings: {
-        title: 'Show me where I am'
+        title: "Show me where I am",
       },
       initialZoomLevel: 17,
       showPopup: false,
       enableHighAccuracy: true,
-      onActivate: () => {} // callback before engine starts retrieving locations
-    };
-    let SearchMarker;
+      onActivate: () => {}, // callback before engine starts retrieving locations
+    }
+    let SearchMarker
     if (this.state.searchMarker) {
-      SearchMarker = <SMarker location={this.state.searchMarker} />;
+      SearchMarker = <SMarker location={this.state.searchMarker} />
     } else {
-      SearchMarker = null;
+      SearchMarker = null
     }
     const AboutButton = (
-          <button
-            className="about-button"
-          >
-            Over dit register
-          </button>
-    );
+      <button className="about-button">Over dit register</button>
+    )
     return (
       <div className="map-component">
         <div id="about-iot">{AboutButton}</div>
@@ -150,8 +153,7 @@ class LMap extends React.Component {
               {SearchMarker}
               {this.enabledDevices.map((device) => (
                 <LMarker device={device} key={device.id} />
-                ))}
-
+              ))}
             </Map>
             <MapLegend
               categories={this.state.categories}
@@ -162,8 +164,8 @@ class LMap extends React.Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default LMap;
+export default LMap
