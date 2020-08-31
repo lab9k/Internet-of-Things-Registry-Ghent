@@ -1,23 +1,22 @@
-import React from "react"
-import { Marker, Popup } from "react-leaflet"
-import L from "leaflet"
-import PropTypes from "prop-types"
-import { getMarker } from "../../services/api/marker"
+import React from 'react'
+import { Marker, Popup } from 'react-leaflet'
+import L from 'leaflet'
+import PropTypes from 'prop-types'
+import { getMarker } from '../../services/api/marker'
 
 const createIcon = () => {
-  const marker = getMarker("marker")
+  const marker = getMarker('marker')
   marker.iconSize = [50, 50]
   return new L.Icon({
-    ...marker,
+    ...marker
   })
 }
 
 const SMarker = (props) => {
-  console.log("placing marker")
   const deviceIcon = createIcon()
   const location = {
     lat: props.location[0],
-    lng: props.location[1],
+    lng: props.location[1]
   }
   return (
     <Marker position={location} icon={deviceIcon}>
@@ -29,7 +28,8 @@ const SMarker = (props) => {
 }
 
 SMarker.propTypes = {
-  location: PropTypes.array,
+  // eslint-disable-next-line react/forbid-prop-types
+  location: PropTypes.array.isRequired
 }
 
 export default SMarker

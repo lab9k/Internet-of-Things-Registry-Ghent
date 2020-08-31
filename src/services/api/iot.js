@@ -1,7 +1,7 @@
-import Papa from "papaparse"
-import { readPaginatedData } from "../datareader"
-import { importAll } from "./marker"
-import Device from "../classes/Device"
+import Papa from 'papaparse'
+import { readPaginatedData } from '../datareader'
+import { importAll } from './marker'
+import Device from '../classes/Device'
 
 function getCSVText(csvList) {
   const urls = Object.values(csvList)
@@ -15,7 +15,7 @@ function getCSVText(csvList) {
           dynamicTyping: true,
           skipEmptyLines: true,
           complete: resolve,
-          error: reject,
+          error: reject
         })
       })
         .then((t) => t.data)
@@ -27,9 +27,8 @@ function getCSVText(csvList) {
 }
 
 function randomID(length) {
-  let result = ""
-  const characters =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+  let result = ''
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
   const charactersLength = characters.length
   for (let i = 0; i < length; i += 1) {
     result += characters.charAt(Math.floor(Math.random() * charactersLength))
@@ -39,17 +38,13 @@ function randomID(length) {
 
 export default async function getDevices() {
   const classes = []
-  const csvList = importAll(require.context("../../csv", false, /\.(csv)$/))
+  const csvList = importAll(require.context('../../csv', false, /\.(csv)$/))
   const csvPromises = getCSVText(csvList)
   const devicePromises = readPaginatedData(process.env.REACT_APP_API_ROOT)
   const devices = []
-  await Promise.all([...csvPromises, devicePromises]).then((c) =>
-    devices.push(c)
-  )
+  await Promise.all([...csvPromises, devicePromises]).then((c) => devices.push(c))
   devices
     .flat(2)
-    .forEach((c) =>
-      classes.push(Object.assign(new Device(), c, { id: randomID(15) }))
-    )
+    .forEach((c) => classes.push(Object.assign(new Device(), c, { id: randomID(15) })))
   return classes
 }

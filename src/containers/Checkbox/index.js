@@ -1,12 +1,12 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import "./style.scss"
-import { ReactComponent as TickIcon } from "../../icons/icon-tick.svg"
+import './style.scss'
+import { ReactComponent as TickIcon } from '../../icons/icon-tick.svg'
 
 class Checkbox extends React.Component {
   static evaluateChecked(checked) {
-    if (typeof checked === "function") {
+    if (typeof checked === 'function') {
       return !!checked()
     }
     return !!checked
@@ -16,7 +16,7 @@ class Checkbox extends React.Component {
     super(props)
     const { checked } = this.props
     this.state = {
-      checked: Checkbox.evaluateChecked(checked),
+      checked: Checkbox.evaluateChecked(checked)
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -24,14 +24,12 @@ class Checkbox extends React.Component {
 
   static getDerivedStateFromProps(nextProps) {
     return {
-      checked: Checkbox.evaluateChecked(nextProps.checked),
+      checked: Checkbox.evaluateChecked(nextProps.checked)
     }
   }
 
   handleChange(event) {
-    this.setState((prevState) => {
-      return { checked: !prevState.checked }
-    })
+    this.setState((prevState) => ({ checked: !prevState.checked }))
     this.props.onChange(event)
   }
 
@@ -53,13 +51,13 @@ class Checkbox extends React.Component {
 
 Checkbox.defaultProps = {
   checked: false,
-  onChange: () => {},
+  onChange: () => {}
 }
 
 Checkbox.propTypes = {
   checked: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
   name: PropTypes.string.isRequired,
-  onChange: PropTypes.func,
+  onChange: PropTypes.func
 }
 
 export default Checkbox

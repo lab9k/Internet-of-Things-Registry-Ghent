@@ -3,11 +3,10 @@
  *
  * This contains all the text for the LeafletMarker component.
  */
-import { defineMessages } from 'react-intl';
 
-export const scope = 'IoTRegister.components.LeafletMarker';
+export const scope = 'IoTRegister.components.LeafletMarker'
 
-export default defineMessages({
+export const messages = {
   device: {
     id: `${scope}.device`,
     defaultMessage: 'Device'
@@ -36,4 +35,4 @@ export default defineMessages({
     id: `${scope}.link_text`,
     defaultMessage: 'MORE INFORMARTION ABOUT GDPR'
   }
-});
+}

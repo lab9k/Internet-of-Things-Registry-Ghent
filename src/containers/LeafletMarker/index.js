@@ -1,18 +1,17 @@
-import React from "react"
-import L from "leaflet"
-import PropTypes from "prop-types"
-import "./style.scss"
+import React from 'react'
+import L from 'leaflet'
+import PropTypes from 'prop-types'
+import './style.scss'
 
-import { renderToString } from "react-dom/server"
-import { Card } from "reactstrap"
-import messages from "./messages"
-import { getTypeMarker } from "../../services/api/marker"
-import Device from "../../services/classes/Device"
+import { renderToString } from 'react-dom/server'
+import { Card } from 'reactstrap'
+import { messages } from './messages'
+import { getTypeMarker } from '../../services/api/marker'
+import Device from '../../services/classes/Device'
 
-export const createIcon = (category, type) =>
-  new L.Icon({
-    ...getTypeMarker(category, type),
-  })
+export const createIcon = (category, type) => new L.Icon({
+  ...getTypeMarker(category, type)
+})
 
 function formatMessage(s) {
   return s.defaultMessage
@@ -52,13 +51,13 @@ export function LMarker(device) {
           </div>
           <div className="data-processing border-bottom pb-1 pl-1 pr-1 pt-2 mt-1 rounded">
             <h6 className="text-muted card-subtitle mb-2">{dataOwnerLabel}</h6>
-            <p className="card-text mt-auto" style={{ fontSize: "14px" }}>
+            <p className="card-text mt-auto" style={{ fontSize: '14px' }}>
               {device.dataowner}
             </p>
           </div>
           <div className="data-processing border-bottom pb-1 pl-1 pr-1 pt-2 mt-1 mb-1 rounded">
             <h6 className="text-muted card-subtitle mb-2">{retentionLabel}</h6>
-            <p className="card-text mt-auto" style={{ fontSize: "14px" }}>
+            <p className="card-text mt-auto" style={{ fontSize: '14px' }}>
               {device.retention}
             </p>
           </div>
@@ -73,5 +72,5 @@ export function LMarker(device) {
 }
 
 LMarker.propTypes = {
-  device: PropTypes.instanceOf(Device).isRequired,
+  device: PropTypes.instanceOf(Device).isRequired
 }

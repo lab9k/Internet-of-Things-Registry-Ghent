@@ -1,19 +1,19 @@
-import React from "react"
-import getTypeDivs from "../Types"
-import Checkbox from "../Checkbox"
-import { getMarker } from "../../services/api/marker"
+import React from 'react'
+import getTypeDivs from '../Types'
+import Checkbox from '../Checkbox'
+import { getMarker } from '../../services/api/marker'
 
 function getCategoryDivs(category, id, onCategoryToggle, onTypeToggle) {
   return (
     <div key={category.name} className="col category_row">
-      <div className="row" style={{ cursor: "pointer" }}>
+      <div className="row" style={{ cursor: 'pointer' }}>
         <Checkbox
           name="check"
           checked={category.enabled}
           onChange={() => onCategoryToggle(id)}
         />
         <div
-          style={{ outline: "none" }}
+          style={{ outline: 'none' }}
           tabIndex={0}
           role="menuitem"
           onClick={() => this.props.onVisibleToggle(id)}

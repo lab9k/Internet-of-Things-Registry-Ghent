@@ -1,26 +1,26 @@
-import React from "react"
-import { Map } from "react-leaflet"
-import WMTSTileLayer from "react-leaflet-wmts"
-import getDevices from "../../services/api/iot"
+import React from 'react'
+import { Map } from 'react-leaflet'
+import WMTSTileLayer from 'react-leaflet-wmts'
+import getDevices from '../../services/api/iot'
 
-import MapLegend from "../MapLegend"
-import { LMarker } from "../LeafletMarker"
+import MapLegend from '../MapLegend'
+import { LMarker } from '../LeafletMarker'
 
-import "./style.scss"
-import Geocoder from "../Geocoder"
-import SMarker from "../SearchMarker"
-import Category from "./Category"
-import Type from "./Type"
+import './style.scss'
+import Geocoder from '../Geocoder'
+import SMarker from '../SearchMarker'
+import Category from './Category'
+import Type from './Type'
 
-import LocateControl from "../locationControl"
-import MarkerCluster from "../MarkerCluster"
+import LocateControl from '../locationControl'
+import MarkerCluster from '../MarkerCluster'
 
 class LMap extends React.Component {
   static makeCategory(t) {
     return {
       category: t,
       enabled: true,
-      visible: true,
+      visible: true
     }
   }
 
@@ -31,10 +31,10 @@ class LMap extends React.Component {
       categories: [],
       center: [
         parseFloat(process.env.REACT_APP_MAP_CENTER_LATITUDE),
-        parseFloat(process.env.REACT_APP_MAP_CENTER_LONGITUDE),
+        parseFloat(process.env.REACT_APP_MAP_CENTER_LONGITUDE)
       ],
       zoom: 14,
-      searchMarker: undefined,
+      searchMarker: undefined
     }
   }
 
@@ -59,10 +59,9 @@ class LMap extends React.Component {
   get enabledDevices() {
     const enabledTypes = this.enabledTypes.map((t) => t.name)
     return this.state.devices.filter(
-      (device) =>
-        this.enabledCategories
-          .map((cat) => cat.name)
-          .includes(device.category) && enabledTypes.includes(device.type)
+      (device) => this.enabledCategories
+        .map((cat) => cat.name)
+        .includes(device.category) && enabledTypes.includes(device.type)
     )
   }
 
@@ -70,7 +69,7 @@ class LMap extends React.Component {
     this.setState({
       center,
       zoom: 19,
-      searchMarker: center,
+      searchMarker: center
     })
   }
 
@@ -125,14 +124,14 @@ class LMap extends React.Component {
 
   render() {
     const locateOptions = {
-      position: "topleft",
+      position: 'topleft',
       strings: {
-        title: "Show me where I am",
+        title: 'Show me where I am'
       },
       initialZoomLevel: 17,
       showPopup: false,
       enableHighAccuracy: true,
-      onActivate: () => {}, // callback before engine starts retrieving locations
+      onActivate: () => {} // callback before engine starts retrieving locations
     }
     let SearchMarker
     if (this.state.searchMarker) {

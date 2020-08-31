@@ -1,10 +1,10 @@
-import { useEffect } from "react"
-import L from "leaflet"
-import "leaflet.markercluster/dist/leaflet.markercluster"
-import "leaflet.markercluster/dist/MarkerCluster.css"
-import "leaflet.markercluster/dist/MarkerCluster.Default.css"
-import { useLeaflet } from "react-leaflet"
-import { createIcon, LMarker } from "../LeafletMarker"
+import { useEffect } from 'react'
+import L from 'leaflet'
+import 'leaflet.markercluster/dist/leaflet.markercluster'
+import 'leaflet.markercluster/dist/MarkerCluster.css'
+import 'leaflet.markercluster/dist/MarkerCluster.Default.css'
+import { useLeaflet } from 'react-leaflet'
+import { createIcon, LMarker } from '../LeafletMarker'
 
 const mcg = L.markerClusterGroup()
 
@@ -22,7 +22,7 @@ const MarkerCluster = ({ markers }) => {
           icon: createIcon(
             LMarkerObject.props.device.category,
             LMarkerObject.props.device.type
-          ),
+          )
         }
       )
         .addTo(mcg)
