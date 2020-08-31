@@ -3,11 +3,8 @@ import { readPaginatedData } from "../datareader"
 import { importAll } from "./marker"
 import Device from "../classes/Device"
 
-let devices = null
-
-async function getCSVText(csvList) {
+function getCSVText(csvList) {
   const urls = Object.values(csvList)
-  const csvs = []
   const promises = []
   urls.forEach((csv) => {
     promises.push(
@@ -21,13 +18,12 @@ async function getCSVText(csvList) {
           error: reject,
         })
       })
-        .then((t) => csvs.push(t.data))
+        .then((t) => t.data)
         // eslint-disable-next-line no-console
         .catch((e) => console.error(e))
     )
   })
-  await Promise.all(promises)
-  return csvs
+  return promises
 }
 
 function randomID(length) {
@@ -41,27 +37,19 @@ function randomID(length) {
   return result
 }
 
-export async function getDevices() {
-  // TODO CONVERT TO Promise.All()
+export default async function getDevices() {
   const classes = []
   const csvList = importAll(require.context("../../csv", false, /\.(csv)$/))
-  const csvs = await getCSVText(csvList)
-  csvs.forEach((csv) =>
-    csv.forEach((c) =>
+  const csvPromises = getCSVText(csvList)
+  const devicePromises = readPaginatedData(process.env.REACT_APP_API_ROOT)
+  const devices = []
+  await Promise.all([...csvPromises, devicePromises]).then((c) =>
+    devices.push(c)
+  )
+  devices
+    .flat(2)
+    .forEach((c) =>
       classes.push(Object.assign(new Device(), c, { id: randomID(15) }))
     )
-  )
-  const devicesList = [
-    ...(await readPaginatedData(process.env.REACT_APP_API_ROOT)),
-  ]
-  devicesList.forEach((c) => classes.push(Object.assign(new Device(), c)))
   return classes
-}
-
-export async function getDevice(id) {
-  if (!devices) {
-    devices = getDevices()
-  }
-  const all = await devices
-  return all.find((element) => element.id === id)
 }

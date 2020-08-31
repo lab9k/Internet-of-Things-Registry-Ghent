@@ -1,7 +1,7 @@
 import React from "react"
 import { Map } from "react-leaflet"
 import WMTSTileLayer from "react-leaflet-wmts"
-import { getDevices } from "../../services/api/iot"
+import getDevices from "../../services/api/iot"
 
 import MapLegend from "../MapLegend"
 import { LMarker } from "../LeafletMarker"

@@ -2,8 +2,9 @@ import React from "react"
 import L from "leaflet"
 import PropTypes from "prop-types"
 import "./style.scss"
-import Card from "react-bootstrap/Card"
+
 import { renderToString } from "react-dom/server"
+import { Card } from "reactstrap"
 import messages from "./messages"
 import { getTypeMarker } from "../../services/api/marker"
 import Device from "../../services/classes/Device"
@@ -26,21 +27,21 @@ export function LMarker(device) {
     <Card>
       <div className="card-body">
         <div className="card-title border-bottom mb-1">
-          <h3>
+          <h5>
             <b>{device.title}</b>
-          </h3>
+          </h5>
         </div>
         <div className="col px-0">
           <div className="row pb-0 border-bottom">
             <div className="col">
-              <h3>
+              <h5>
                 <i>{device.category}</i>
-              </h3>
+              </h5>
             </div>
             <div className="col">
-              <h3>
+              <h5>
                 <i>{device.type}</i>
-              </h3>
+              </h5>
             </div>
           </div>
           <div className="data-processing border-bottom pb-1 pl-1 pr-1 pt-2 mt-1 rounded">

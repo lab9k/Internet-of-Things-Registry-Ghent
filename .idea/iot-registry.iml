@@ -9,5 +9,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="@types/leaflet" level="application" />
+    <orderEntry type="library" name="@types/react-leaflet" level="application" />
+    <orderEntry type="library" name="@types/leaflet.markercluster" level="application" />
+    <orderEntry type="library" name="@types/leaflet.markercluster.layersupport" level="application" />
+    <orderEntry type="library" name="leaflet.locatecontrol" level="application" />
   </component>
 </module>
