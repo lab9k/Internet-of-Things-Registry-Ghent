@@ -1,6 +1,9 @@
+import React from "react"
 import L from "leaflet"
 import PropTypes from "prop-types"
 import "./style.scss"
+import Card from "react-bootstrap/Card"
+import { renderToString } from "react-dom/server"
 import messages from "./messages"
 import { getTypeMarker } from "../../services/api/marker"
 import Device from "../../services/classes/Device"
@@ -19,50 +22,53 @@ export function LMarker(device) {
   const dataOwnerLabel = formatMessage(messages.data_owner)
   const retentionLabel = formatMessage(messages.retention)
   const linkLabel = formatMessage(messages.link_text)
-  return `<div class="card">
-      <div class="card-body">
-        <div class="card-title border-bottom mb-1">
+  const body = (
+    <Card>
+      <div className="card-body">
+        <div className="card-title border-bottom mb-1">
           <h3>
-            <b>${device.title}</b>
+            <b>{device.title}</b>
           </h3>
         </div>
-        <div class="col px-0">
-          <div class="row pb-0 border-bottom">
-            <div class="col">
+        <div className="col px-0">
+          <div className="row pb-0 border-bottom">
+            <div className="col">
               <h3>
-                <i>${device.category}</i>
+                <i>{device.category}</i>
               </h3>
             </div>
-            <div class="col">
+            <div className="col">
               <h3>
-                <i>${device.type}</i>
+                <i>{device.type}</i>
               </h3>
             </div>
           </div>
-          <div class="data-processing border-bottom pb-1 pl-1 pr-1 pt-2 mt-1 rounded">
-            <h6 class="text-muted card-subtitle mb-2">
-              ${dataProcessingLabel}
+          <div className="data-processing border-bottom pb-1 pl-1 pr-1 pt-2 mt-1 rounded">
+            <h6 className="text-muted card-subtitle mb-2">
+              {dataProcessingLabel}
             </h6>
-            <p class="card-text mt-auto">${device.dataprocessing}</p>
+            <p className="card-text mt-auto">{device.dataprocessing}</p>
           </div>
-          <div class="data-processing border-bottom pb-1 pl-1 pr-1 pt-2 mt-1 rounded">
-            <h6 class="text-muted card-subtitle mb-2">${dataOwnerLabel}</h6>
-            <p class="card-text mt-auto" style="font-size: 14px">
-              ${device.dataowner}
+          <div className="data-processing border-bottom pb-1 pl-1 pr-1 pt-2 mt-1 rounded">
+            <h6 className="text-muted card-subtitle mb-2">{dataOwnerLabel}</h6>
+            <p className="card-text mt-auto" style={{ fontSize: "14px" }}>
+              {device.dataowner}
             </p>
           </div>
-          <div class="data-processing border-bottom pb-1 pl-1 pr-1 pt-2 mt-1 mb-1 rounded">
-            <h6 class="text-muted card-subtitle mb-2">${retentionLabel}</h6>
-            <p class="card-text mt-auto" style="font-size: 14px">
-              ${device.retention}
+          <div className="data-processing border-bottom pb-1 pl-1 pr-1 pt-2 mt-1 mb-1 rounded">
+            <h6 className="text-muted card-subtitle mb-2">{retentionLabel}</h6>
+            <p className="card-text mt-auto" style={{ fontSize: "14px" }}>
+              {device.retention}
             </p>
           </div>
-          <a class="card-link mt-2" href=${device.link}>
-            ${linkLabel}
+          <a className="card-link mt-2" href={device.link}>
+            {linkLabel}
           </a>
         </div>
       </div>
-    </div>`
+    </Card>
+  )
+  return renderToString(body)
 }
 
 LMarker.propTypes = {
