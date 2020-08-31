@@ -4,16 +4,26 @@ import WMTSTileLayer from "react-leaflet-wmts"
 import { getDevices } from "../../services/api/iot"
 
 import MapLegend from "../MapLegend"
-import LMarker from "../LeafletMarker"
+import { LMarker } from "../LeafletMarker"
 
 import "./style.scss"
 import Geocoder from "../Geocoder"
 import SMarker from "../SearchMarker"
-import { Category, Type } from "./Category"
+import Category from "./Category"
+import Type from "./Type"
 
 import LocateControl from "../locationControl"
+import MarkerCluster from "../MarkerCluster"
 
 class LMap extends React.Component {
+  static makeCategory(t) {
+    return {
+      category: t,
+      enabled: true,
+      visible: true,
+    }
+  }
+
   constructor(props) {
     super(props)
     this.state = {
@@ -26,7 +36,6 @@ class LMap extends React.Component {
       zoom: 14,
       searchMarker: undefined,
     }
-    this.setViewPort = this.setViewPort.bind(this)
   }
 
   componentDidMount() {
@@ -57,7 +66,7 @@ class LMap extends React.Component {
     )
   }
 
-  setViewPort(center) {
+  setViewPort = (center) => {
     this.setState({
       center,
       zoom: 19,
@@ -78,23 +87,15 @@ class LMap extends React.Component {
     this.setState({ categories: tax })
   }
 
-  makeCategory(t) {
-    return {
-      category: t,
-      enabled: true,
-      visible: true,
-    }
-  }
-
-  // reacts to the checkmark being toggled on and off
   toggleCategory(key) {
-    const currentCategories = this.state.categories
-    currentCategories[key].enabled = !currentCategories[key].enabled
-    // eslint-disable-next-line no-param-reassign
-    currentCategories[key].types.forEach((t) => {
-      t.enabled = currentCategories[key].enabled
+    this.setState((prevState) => {
+      const currentCategories = prevState.categories
+      currentCategories[key].enabled = !currentCategories[key].enabled
+      currentCategories[key].types.forEach((t) => {
+        t.enabled = currentCategories[key].enabled
+      })
+      return { categories: currentCategories }
     })
-    this.setState({ categories: currentCategories })
   }
 
   // reacts to the list of types being made visible or not
@@ -106,9 +107,20 @@ class LMap extends React.Component {
 
   // reacts to the checkmark being toggled on and off
   toggleType(category, type) {
-    const currentType = category.types.find((t) => t.name === type.name)
-    currentType.enabled = !currentType.enabled
-    this.setState({ categories: this.state.categories })
+    // const currentType = category.types.find((t) => t.name === type.name)
+    // currentType.enabled = !currentType.enabled
+    this.setState((prevState) => {
+      const { categories } = prevState
+      const currentType = category.types.find((t) => t.name === type.name)
+      currentType.enabled = !currentType.enabled
+      if (currentType.enabled) {
+        category.enabled = true
+      }
+      if (category.types.every((t) => !t.enabled)) {
+        category.enabled = false
+      }
+      return categories
+    })
   }
 
   render() {
@@ -129,7 +141,9 @@ class LMap extends React.Component {
       SearchMarker = null
     }
     const AboutButton = (
-      <button className="about-button">Over dit register</button>
+      <button type="button" className="about-button">
+        Over dit register
+      </button>
     )
     return (
       <div className="map-component">
@@ -151,9 +165,11 @@ class LMap extends React.Component {
                 format="image/png"
               />
               {SearchMarker}
-              {this.enabledDevices.map((device) => (
-                <LMarker device={device} key={device.id} />
-              ))}
+              <MarkerCluster
+                markers={this.enabledDevices.map((device) => (
+                  <LMarker device={device} key={device.id} />
+                ))}
+              />
             </Map>
             <MapLegend
               categories={this.state.categories}

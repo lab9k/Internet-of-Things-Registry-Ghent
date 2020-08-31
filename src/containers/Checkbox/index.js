@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-import "./_checkbox.scss"
+import "./style.scss"
 import { ReactComponent as TickIcon } from "../../icons/icon-tick.svg"
 
 class Checkbox extends React.Component {
