@@ -10,10 +10,13 @@ i18n
   .init({
     fallbackLng: 'nl',
     debug: true,
-    saveMissing: true,
+    react: {
+      wait: true,
+      useSuspense: false
+    },
     interpolation: {
       escapeValue: false
     }
-  });
+  })
 
 export default i18n;

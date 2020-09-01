@@ -5,22 +5,13 @@ import { ReactComponent as CollapseIcon } from '../../icons/icon-arrow-down.svg'
 import { ReactComponent as ExpandIcon } from '../../icons/icon-arrow-up.svg'
 import { ReactComponent as MapLayersIcon } from '../../icons/icon-map-layers.svg'
 
-import { messages } from './messages'
 import './style.scss'
 import getCategoryDivs from '../Categories'
 import Device from '../../services/classes/Device'
 
-function formatMessage(title) {
-  return title.defaultMessage
-}
-
-class MapLegend extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      isLegendVisible: window.innerWidth > 576
-    }
-  }
+function MapLegend(props) {
+  const [isLegendVisible, setVisible] = useState(window.innerWidth > 576)
+  const [t] = useTranslation()
 
   render() {
     const checkboxList = Object.entries(

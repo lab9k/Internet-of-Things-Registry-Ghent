@@ -4,7 +4,7 @@ import WMTSTileLayer from 'react-leaflet-wmts'
 import getDevices from '../../services/api/iot'
 
 import MapLegend from '../MapLegend'
-import { LMarker } from '../LeafletMarker'
+import LMarker from '../LeafletMarker'
 
 import './style.scss'
 import Geocoder from '../Geocoder'

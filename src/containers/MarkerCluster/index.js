@@ -5,7 +5,7 @@ import 'leaflet.markercluster/dist/MarkerCluster.css'
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css'
 import { useLeaflet } from 'react-leaflet'
 import { renderToString } from 'react-dom/server';
-import { createIcon, LMarker } from '../LeafletMarker'
+import LMarker, { createIcon } from '../LeafletMarker'
 
 const mcg = L.markerClusterGroup()
 

@@ -1,5 +1,4 @@
-import React, { Suspense } from 'react'
-import { useTranslation } from 'react-i18next';
+import React from 'react'
 import './App.scss'
 import './global.scss'
 import 'leaflet/dist/leaflet'
@@ -11,10 +10,8 @@ import LeafletMap from './containers/LeafletMap/index'
 
 export default function App() {
   return (
-    <Suspense fallback="loading">
-      <div className="container">
-        <LeafletMap />
-      </div>
-    </Suspense>
+    <div className="container">
+      <LeafletMap />
+    </div>
   )
 }
