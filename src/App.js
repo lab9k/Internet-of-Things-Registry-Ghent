@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { Suspense } from 'react'
+import { useTranslation } from 'react-i18next';
 import './App.scss'
 import './global.scss'
 import 'leaflet/dist/leaflet'
@@ -8,14 +9,12 @@ import 'leaflet.markercluster/dist/MarkerCluster.Default.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import LeafletMap from './containers/LeafletMap/index'
 
-class App extends React.PureComponent {
-  render() {
-    return (
+export default function App() {
+  return (
+    <Suspense fallback="loading">
       <div className="container">
         <LeafletMap />
       </div>
-    )
-  }
+    </Suspense>
+  )
 }
-
-export default App

@@ -1,60 +1,57 @@
-/* eslint-disable */
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { getLocations, getAddress } from '../../services/api/Geocoder';
 import Suggestions from '../Suggestions';
 
-class Geocoder extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      query: '',
-      results: []
-    };
-  }
-
-  getData = (v) => {
-    getLocations(`${v},Gent`)
+function Geocoder(props) {
+  // this.state = {
+  //   query: '',
+  //   results: []
+  // };
+  const [query, setQuery] = useState('')
+  const [results, setResults] = useState([])
+  const searchEl = useRef(null)
+  const getData = (v) => {
+    getLocations(`${v},${process.env.REACT_APP_CITY_FILTER}`)
       .then((data) => {
-        this.setState({
-          results: data.SuggestionResult
-        });
+        setResults(data.SuggestionResult);
       });
   }
 
-  handleInputChange = () => {
-    this.setState({ query: this.search.value },
-      () => {
-        this.getData(this.search.value);
-      });
+  useEffect(() => {
+    getData(searchEl.current)
+  }, [query])
+
+  const handleInputChange = () => {
+    setQuery(searchEl.current)
   }
 
-  clearData = (q) => {
-    getAddress(q).then(c => this.props.viewportCallback([c.LocationResult[0].Location.Lat_WGS84, c.LocationResult[0].Location.Lon_WGS84]));
-    this.setState({
-      query: q,
-      results: []
-    });
+  const clearData = (q) => {
+    getAddress(q)
+      .then((c) => props.viewportCallback(
+        [c.LocationResult[0].Location.Lat_WGS84,
+          c.LocationResult[0].Location.Lon_WGS84]
+      ));
+    setQuery(q)
+    setResults([])
   }
 
-  render() {
-    return (
-      <form className="geocoder" autoComplete="off">
-        <input
-          className="form-control"
-          placeholder="Gent"
-          value={this.state.query}
-          ref={(input) => this.search = input}
-          onChange={this.handleInputChange}
-        />
-        <Suggestions results={this.state.results} clearResults={this.clearData} />
-      </form>
-    );
-  }
+  return (
+    <form className="geocoder" autoComplete="off">
+      <input
+        className="form-control"
+        placeholder="Gent"
+        value={query}
+        ref={searchEl}
+        onChange={handleInputChange}
+      />
+      <Suggestions results={results} clearResults={clearData} />
+    </form>
+  );
 }
 
 Geocoder.propTypes = {
-  viewportCallback: PropTypes.func
+  viewportCallback: PropTypes.func.isRequired
 }
 
 export default Geocoder;

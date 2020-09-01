@@ -4,6 +4,7 @@ import 'leaflet.markercluster/dist/leaflet.markercluster'
 import 'leaflet.markercluster/dist/MarkerCluster.css'
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css'
 import { useLeaflet } from 'react-leaflet'
+import { renderToString } from 'react-dom/server';
 import { createIcon, LMarker } from '../LeafletMarker'
 
 const mcg = L.markerClusterGroup()
@@ -26,7 +27,7 @@ const MarkerCluster = ({ markers }) => {
         }
       )
         .addTo(mcg)
-        .bindPopup(LMarker(LMarkerObject.props.device))
+        .bindPopup(renderToString(LMarker(LMarkerObject.props.device)))
     })
 
     // optionally center the map around the markers

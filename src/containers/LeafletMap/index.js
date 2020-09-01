@@ -106,8 +106,6 @@ class LMap extends React.Component {
 
   // reacts to the checkmark being toggled on and off
   toggleType(category, type) {
-    // const currentType = category.types.find((t) => t.name === type.name)
-    // currentType.enabled = !currentType.enabled
     this.setState((prevState) => {
       const { categories } = prevState
       const currentType = category.types.find((t) => t.name === type.name)
@@ -130,8 +128,7 @@ class LMap extends React.Component {
       },
       initialZoomLevel: 17,
       showPopup: false,
-      enableHighAccuracy: true,
-      onActivate: () => {} // callback before engine starts retrieving locations
+      enableHighAccuracy: true
     }
     let SearchMarker
     if (this.state.searchMarker) {
@@ -139,6 +136,7 @@ class LMap extends React.Component {
     } else {
       SearchMarker = null
     }
+    // TODO: TRANSLATION
     const AboutButton = (
       <button type="button" className="about-button">
         Over dit register

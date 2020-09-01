@@ -17,7 +17,6 @@ function formatMessage(title) {
 class MapLegend extends React.Component {
   constructor(props) {
     super(props)
-
     this.state = {
       isLegendVisible: window.innerWidth > 576
     }

@@ -1,13 +1,10 @@
 import React from 'react'
 import L from 'leaflet'
-import PropTypes from 'prop-types'
 import './style.scss'
-
-import { renderToString } from 'react-dom/server'
 import { Card } from 'reactstrap'
 import { messages } from './messages'
 import { getTypeMarker } from '../../services/api/marker'
-import Device from '../../services/classes/Device'
+import Device from '../../services/classes/Device';
 
 export const createIcon = (category, type) => new L.Icon({
   ...getTypeMarker(category, type)
@@ -16,13 +13,13 @@ export const createIcon = (category, type) => new L.Icon({
 function formatMessage(s) {
   return s.defaultMessage
 }
-// LMarker has to return pure HTML not JSX to work nicely with markers
-export function LMarker(device) {
+
+export function LMarker(device: Device) {
   const dataProcessingLabel = formatMessage(messages.data_processing)
   const dataOwnerLabel = formatMessage(messages.data_owner)
   const retentionLabel = formatMessage(messages.retention)
   const linkLabel = formatMessage(messages.link_text)
-  const body = (
+  return (
     <Card>
       <div className="card-body">
         <div className="card-title border-bottom mb-1">
@@ -68,9 +65,4 @@ export function LMarker(device) {
       </div>
     </Card>
   )
-  return renderToString(body)
-}
-
-LMarker.propTypes = {
-  device: PropTypes.instanceOf(Device).isRequired
 }
