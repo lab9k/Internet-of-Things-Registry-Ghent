@@ -14,6 +14,7 @@ import Type from './Type'
 
 import LocateControl from '../locationControl'
 import MarkerCluster from '../MarkerCluster'
+import AboutButton from './AboutButton';
 
 class LMap extends React.Component {
   static makeCategory(t) {
@@ -136,15 +137,12 @@ class LMap extends React.Component {
     } else {
       SearchMarker = null
     }
-    // TODO: TRANSLATION
-    const AboutButton = (
-      <button type="button" className="about-button">
-        Over dit register
-      </button>
-    )
+
     return (
       <div className="map-component">
-        <div id="about-iot">{AboutButton}</div>
+        <div id="about-iot">
+          <AboutButton />
+        </div>
         <div className="map">
           <div id="mapdiv">
             <Geocoder viewportCallback={this.setViewPort} />

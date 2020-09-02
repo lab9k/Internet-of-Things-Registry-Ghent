@@ -9,6 +9,7 @@ export default class Device {
   constructor(
     id,
     title,
+    personalData,
     category,
     type,
     dataowner,
@@ -20,6 +21,7 @@ export default class Device {
   ) {
     this.id = id
     this.title = title
+    this.personalData = personalData
     this.category = category
     this.type = type
     this.dataowner = dataowner

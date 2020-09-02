@@ -37,7 +37,7 @@ function MapLegend(props) {
       >
         <MapLayersIcon className="map-legend__header-icon" />
         <h4 className="map-legend__header-title" aria-hidden="true">
-          {t('mapLegend.devices')}
+          {t('devices')}
         </h4>
         <CollapseIcon className="map-legend__header-icon map-legend__header-icon--expanded" />
         <ExpandIcon className="map-legend__header-icon map-legend__header-icon--collapsed" />

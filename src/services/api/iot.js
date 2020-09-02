@@ -38,10 +38,12 @@ function randomID(length) {
 
 export default async function getDevices() {
   const classes = []
-  const csvList = importAll(require.context('../../csv', false, /\.(csv)$/))
-  const csvPromises = getCSVText(csvList)
+  // create list of promises that return csv's transformed into json objects
+  const csvPromises = getCSVText(importAll(require.context('../../csv', false, /\.(csv)$/)))
+  // the same but from the APIAPI api
   const devicePromises = readPaginatedData(process.env.REACT_APP_API_ROOT)
   const devices = []
+  // await all the promises asynchronous and save in devices
   await Promise.all([...csvPromises, devicePromises]).then((c) => devices.push(c))
   devices
     .flat(2)

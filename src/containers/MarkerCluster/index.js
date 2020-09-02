@@ -6,7 +6,8 @@ import 'leaflet.markercluster/dist/MarkerCluster.Default.css'
 import { useLeaflet } from 'react-leaflet'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { createIcon } from '../LeafletMarker'
-
+// if you want to customize cluster behavior
+// https://github.com/Leaflet/Leaflet.markercluster#options
 const mcg = L.markerClusterGroup()
 
 const MarkerCluster = ({ markers }) => {

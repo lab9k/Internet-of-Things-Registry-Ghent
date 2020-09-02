@@ -1,14 +1,9 @@
 {
-  "leafletMap": {
-    "about": "Over dit register"
-  },
-  "leafletMarker": {
-    "dataprocessing": "Dataverwerking",
-    "personaldata": "Persoonsgegevens",
-    "retentionPeriod": "Bewaartermijn",
-    "linkLabel": "Meer informatie"
-  },
-  "mapLegend": {
-    "devices": "Apparaten"
-  }
+  "about": "Over dit register",
+  "datacontactorg": "Contacteer",
+  "dataprocessing": "Dataverwerking",
+  "personaldata": "Persoonsgegevens",
+  "retention": "Bewaartermijn",
+  "linkLabel": "Meer informatie",
+  "devices": "Apparaten"
 }

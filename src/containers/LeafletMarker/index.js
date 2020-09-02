@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { getTypeMarker } from '../../services/api/marker'
 import Device from '../../services/classes/Device';
+import TextBlock from './textBlock';
 
 export const createIcon = (category, type) => new L.Icon({
   ...getTypeMarker(category, type)
@@ -14,10 +15,11 @@ export const createIcon = (category, type) => new L.Icon({
 function LMarker(props) {
   const { t } = useTranslation()
   const { device } = props
-  const dataProcessingLabel = t('leafletMarker.dataprocessing')
-  const personalDataLabel = t('leafletMarker.personaldata')
-  const retentionLabel = t('leafletMarker.retentionPeriod')
-  const linkLabel = t('leafletMarker.linkLabel')
+  const dataProcessingLabel = t('dataprocessing')
+  const personalDataLabel = t('personaldata')
+  const retentionLabel = t('retention')
+  const contactLabel = t('datacontactorg')
+  const linkLabel = t('linkLabel')
   return (
     <Card>
       <div className="card-body">
@@ -39,24 +41,10 @@ function LMarker(props) {
               </h5>
             </div>
           </div>
-          <div className="data-processing border-bottom pb-1 pl-1 pr-1 pt-2 mt-1 rounded">
-            <h6 className="text-muted card-subtitle mb-2">
-              {dataProcessingLabel}
-            </h6>
-            <p className="card-text mt-auto">{device.dataprocessing}</p>
-          </div>
-          <div className="data-processing border-bottom pb-1 pl-1 pr-1 pt-2 mt-1 rounded">
-            <h6 className="text-muted card-subtitle mb-2">{personalDataLabel}</h6>
-            <p className="card-text mt-auto" style={{ fontSize: '14px' }}>
-              {device.dataowner}
-            </p>
-          </div>
-          <div className="data-processing border-bottom pb-1 pl-1 pr-1 pt-2 mt-1 mb-1 rounded">
-            <h6 className="text-muted card-subtitle mb-2">{retentionLabel}</h6>
-            <p className="card-text mt-auto" style={{ fontSize: '14px' }}>
-              {device.retention}
-            </p>
-          </div>
+          <TextBlock label={personalDataLabel} content={device.personalData} />
+          <TextBlock label={dataProcessingLabel} content={device.dataprocessing} />
+          <TextBlock label={retentionLabel} content={device.retention} />
+          <TextBlock label={contactLabel} content={device.dataowner} />
           <a className="card-link mt-2" href={device.link}>
             {linkLabel}
           </a>
