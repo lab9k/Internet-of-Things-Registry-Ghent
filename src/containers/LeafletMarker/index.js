@@ -41,8 +41,8 @@ function LMarker(props) {
               </h5>
             </div>
           </div>
-          <TextBlock label={personalDataLabel} content={device.personalData} />
           <TextBlock label={dataProcessingLabel} content={device.dataprocessing} />
+          <TextBlock label={personalDataLabel} content={device.personalData} />
           <TextBlock label={retentionLabel} content={device.retention} />
           <TextBlock label={contactLabel} content={device.dataowner} />
           <a className="card-link mt-2" href={device.link}>
