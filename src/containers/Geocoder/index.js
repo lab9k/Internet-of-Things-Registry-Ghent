@@ -4,10 +4,6 @@ import { getLocations, getAddress } from '../../services/api/Geocoder';
 import Suggestions from '../Suggestions';
 
 function Geocoder(props) {
-  // this.state = {
-  //   query: '',
-  //   results: []
-  // };
   const [query, setQuery] = useState('')
   const [results, setResults] = useState([])
   const searchEl = useRef(null)
@@ -19,11 +15,13 @@ function Geocoder(props) {
   }
 
   useEffect(() => {
-    getData(searchEl.current)
+    if (query !== '') {
+      getData(query)
+    }
   }, [query])
 
   const handleInputChange = () => {
-    setQuery(searchEl.current)
+    setQuery(searchEl.current.value);
   }
 
   const clearData = (q) => {
@@ -32,7 +30,7 @@ function Geocoder(props) {
         [c.LocationResult[0].Location.Lat_WGS84,
           c.LocationResult[0].Location.Lon_WGS84]
       ));
-    setQuery(q)
+    setQuery('')
     setResults([])
   }
 

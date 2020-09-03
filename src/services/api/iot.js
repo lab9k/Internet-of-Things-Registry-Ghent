@@ -3,7 +3,9 @@ import { readPaginatedData } from '../datareader'
 import { importAll } from './marker'
 import Device from '../classes/Device'
 
-function getCSVText(csvList) {
+function getCSVPromises(csvList) {
+  const regex = /[0-9]+[,.][0-9]+[,.][0-9]+/
+  const delim = /[,.]/
   const urls = Object.values(csvList)
   const promises = []
   urls.forEach((csv) => {
@@ -15,7 +17,14 @@ function getCSVText(csvList) {
           dynamicTyping: true,
           skipEmptyLines: true,
           complete: resolve,
-          error: reject
+          error: reject,
+          transform: (value) => {
+            if (regex.test(value)) {
+              const a = value.split(delim)
+              return `${a[0]}.${a[1]}${a[2]}`
+            }
+            return value;
+          }
         })
       })
         .then((t) => t.data)
@@ -38,15 +47,24 @@ function randomID(length) {
 
 export default async function getDevices() {
   const classes = []
-  // create list of promises that return csv's transformed into json objects
-  const csvPromises = getCSVText(importAll(require.context('../../csv', false, /\.(csv)$/)))
-  // the same but from the APIAPI api
+  const csvPromises = getCSVPromises(importAll(require.context('../../csv', false, /\.(csv)$/)))
   const devicePromises = readPaginatedData(process.env.REACT_APP_API_ROOT)
   const devices = []
   // await all the promises asynchronous and save in devices
   await Promise.all([...csvPromises, devicePromises]).then((c) => devices.push(c))
+  // flatmaps and makes all keys uniform, does not use immutable data
   devices
     .flat(2)
     .forEach((c) => classes.push(Object.assign(new Device(), c, { id: randomID(15) })))
+  classes.forEach((o) => Object.keys(o).forEach(
+    (oldKey) => {
+      const newKey = oldKey.toLowerCase().replace(/[^a-zA-Z0-9]/g, '')
+      if (oldKey !== newKey) {
+        Object.defineProperty(o, newKey,
+          Object.getOwnPropertyDescriptor(o, oldKey));
+        delete o[oldKey]
+      }
+    }
+  ))
   return classes
 }
