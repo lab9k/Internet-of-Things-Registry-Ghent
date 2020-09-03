@@ -139,39 +139,41 @@ class LMap extends React.Component {
     }
 
     return (
-      <div className="map-component">
-        <div id="about-iot">
-          <AboutButton />
-        </div>
-        <div className="map">
-          <div id="mapdiv">
-            <Geocoder viewportCallback={this.setViewPort} />
-            <Map
-              center={this.state.center}
-              zoom={this.state.zoom}
-              onViewportChanged={this.onViewportChanged}
-              maxZoom={parseInt(process.env.REACT_APP_MAP_MAX_ZOOM, 10)}
-            >
-              <LocateControl className="about-iot" options={locateOptions} />
-              <WMTSTileLayer
-                url={process.env.REACT_APP_MAP_ROOT}
-                layer="SG-E-Stadsplan:Stadsplan"
-                tilematrixSet="SG-WEB MERCATOR"
-                format="image/png"
+      <div className="container">
+        <div className="map-component">
+          <div id="about-iot">
+            <AboutButton />
+          </div>
+          <div className="map">
+            <div id="mapdiv">
+              <Geocoder viewportCallback={this.setViewPort} />
+              <Map
+                center={this.state.center}
+                zoom={this.state.zoom}
+                onViewportChanged={this.onViewportChanged}
+                maxZoom={parseInt(process.env.REACT_APP_MAP_MAX_ZOOM, 10)}
+              >
+                <LocateControl className="about-iot" options={locateOptions} />
+                <WMTSTileLayer
+                  url={process.env.REACT_APP_MAP_ROOT}
+                  layer="SG-E-Stadsplan:Stadsplan"
+                  tilematrixSet="SG-WEB MERCATOR"
+                  format="image/png"
+                />
+                {SearchMarker}
+                <MarkerCluster
+                  markers={this.enabledDevices.map((device) => (
+                    <LMarker device={device} key={device.id} />
+                  ))}
+                />
+              </Map>
+              <MapLegend
+                categories={this.state.categories}
+                onCategoryToggle={(key) => this.toggleCategory(key)}
+                onTypeToggle={(category, type) => this.toggleType(category, type)}
+                onVisibleToggle={(key) => this.toggleCategoryTypesVisible(key)}
               />
-              {SearchMarker}
-              <MarkerCluster
-                markers={this.enabledDevices.map((device) => (
-                  <LMarker device={device} key={device.id} />
-                ))}
-              />
-            </Map>
-            <MapLegend
-              categories={this.state.categories}
-              onCategoryToggle={(key) => this.toggleCategory(key)}
-              onTypeToggle={(category, type) => this.toggleType(category, type)}
-              onVisibleToggle={(key) => this.toggleCategoryTypesVisible(key)}
-            />
+            </div>
           </div>
         </div>
       </div>
