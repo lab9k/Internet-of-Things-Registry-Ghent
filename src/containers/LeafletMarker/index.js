@@ -19,9 +19,9 @@ function LMarker(props) {
   const dataProcessingLabel = t('dataprocessing')
   const personalDataLabel = t('personaldata')
   const retentionLabel = t('retention')
-  const contactLabel = t('contactorg')
-  const linkLabel = t('linkLabel')
-  const datalinkLabel = t('datalinkLabel')
+  const contactLabel = t('datacontactorg')
+  const linkLabel = t('linklabel')
+  const datalinkLabel = t('datalinklabel')
   return (
     <Card>
       <div className="card-body">

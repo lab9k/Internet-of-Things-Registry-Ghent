@@ -15,6 +15,7 @@ import Type from './Type'
 import LocateControl from '../locationControl'
 import MarkerCluster from '../MarkerCluster'
 import AboutButton from './AboutButton';
+import { trackPromise } from 'react-promise-tracker';
 
 class LMap extends React.Component {
   static makeCategory(t) {
@@ -40,9 +41,9 @@ class LMap extends React.Component {
   }
 
   componentDidMount() {
-    getDevices()
+    trackPromise(getDevices()
       .then((dev) => this.setState({ devices: [...dev] }))
-      .then(() => this.loadCategories())
+      .then(() => this.loadCategories()))
   }
 
   get enabledCategories() {

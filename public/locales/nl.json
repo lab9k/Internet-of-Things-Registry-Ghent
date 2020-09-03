@@ -4,7 +4,8 @@
   "dataprocessing": "Dataverwerking",
   "personaldata": "Persoonsgegevens",
   "retention": "Bewaartermijn",
-  "linkLabel": "Meer informatie",
+  "linklabel": "Meer informatie",
   "devices": "Apparaten",
-  "datalinkLabel": "Link naar de open data"
+  "contactorg": "Contact Organisatie",
+  "datalinklabel": "Link naar de open data"
 }
