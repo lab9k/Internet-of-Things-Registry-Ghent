@@ -21,7 +21,7 @@ function LMarker(props) {
   const retentionLabel = t('retention')
   const contactLabel = t('contactorg')
   const linkLabel = t('linkLabel')
-
+  const datalinkLabel = t('datalinkLabel')
   return (
     <Card>
       <div className="card-body">
@@ -47,7 +47,16 @@ function LMarker(props) {
           <TextBlock label={personalDataLabel} content={device.personalData} />
           <TextBlock label={retentionLabel} content={device.retention} />
           <TextBlock label={contactLabel} content={device.contactorg} />
-          <LinkBlock device={device} linkLabel={linkLabel} />
+          <LinkBlock
+            deviceLink={device.link}
+            deviceLinkLabel={device.linklabel}
+            alternativeLinkLabel={linkLabel}
+          />
+          <LinkBlock
+            deviceLink={device.datalink}
+            deviceLinkLabel={device.datalinklabel}
+            alternativeLinkLabel={datalinkLabel}
+          />
         </div>
       </div>
     </Card>

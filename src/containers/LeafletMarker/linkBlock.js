@@ -1,24 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Device from '../../services/classes/Device';
 
 export default function LinkBlock(props) {
-  const { device, linkLabel } = props
-  if (device.linklabel === undefined) {
+  const { deviceLink, deviceLinkLabel, alternativeLinkLabel } = props
+  if (deviceLink === null || deviceLink === undefined) {
+    return null
+  }
+  if (deviceLinkLabel === undefined) {
     return (
-      <a className="card-link mt-2" href={device.link}>
-        {linkLabel}
+      <a className="card-link mt-2" href={deviceLink}>
+        {alternativeLinkLabel}
       </a>
     )
   }
   return (
-    <a className="card-link mt-2" href={device.link}>
-      {device.linklabel}
+    <a className="card-link mt-2" href={deviceLink}>
+      {deviceLinkLabel}
     </a>
   )
 }
 
 LinkBlock.propTypes = {
-  device: PropTypes.instanceOf(Device).isRequired,
-  linkLabel: PropTypes.string.isRequired
+  deviceLink: PropTypes.string.isRequired,
+  deviceLinkLabel: PropTypes.string.isRequired,
+  alternativeLinkLabel: PropTypes.string.isRequired
 }

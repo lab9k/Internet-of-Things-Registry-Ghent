@@ -5,5 +5,6 @@
   "personaldata": "Persoonsgegevens",
   "retention": "Bewaartermijn",
   "linkLabel": "Meer informatie",
-  "devices": "Apparaten"
+  "devices": "Apparaten",
+  "datalinkLabel": "Link naar de open data"
 }

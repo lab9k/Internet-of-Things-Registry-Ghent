@@ -17,6 +17,8 @@ export default class Device {
     link,
     retention,
     linklabel,
+    datalink,
+    datalinklabel,
     latitude,
     longitude
   ) {
@@ -30,6 +32,8 @@ export default class Device {
     this.link = link
     this.retention = retention
     this.linklabel = linklabel
+    this.datalink = datalink
+    this.datalinklabel = datalinklabel
     this.latitude = parseGeoLoc(latitude)
     this.longitude = parseGeoLoc(longitude)
   }
