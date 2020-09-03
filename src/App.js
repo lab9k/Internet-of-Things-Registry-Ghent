@@ -6,8 +6,7 @@ import 'leaflet/dist/leaflet.css'
 import 'leaflet.markercluster/dist/MarkerCluster.css'
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { BrowserRouter as Router } from 'react-router-dom'
-import Route from 'react-router-dom/es/Route';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import LeafletMap from './containers/LeafletMap/index'
 import AboutPage from './containers/AboutPage';
 

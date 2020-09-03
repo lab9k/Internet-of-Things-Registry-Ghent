@@ -72,9 +72,11 @@ adding csv files is very easy, just add a new file that has the correct headers(
 > An excerpt of the ANPR camera csv that is formatted correctly.
 
 ```
-category,type,latitude,longitude,datacontactorg,retention,dataprocessing,title
-Camera,Nummerplaatherkenning,51.053752,3.718900,Stad Gent Mobiliteit,2 weken,Toegangscontrole autovrij gebied,001-ANPRVYS00010
-Camera,Nummerplaatherkenning,51.055350,3.718790,Stad Gent Mobiliteit,2 weken,Toegangscontrole autovrij gebied,005-ANPRVYS00012
+category,type,title,latitude,longitude,dataprocessing,retention,personaldata,contactorg,linklabel,link
+Camera,Nummerplaatherkenning,Toegangscontrole autovrij gebied - Sint-Michielsplein,51.053752,3.718900,"In het kader van het circulatieplan controleren slimme camera’s de autonummerplaten. Dit in de autovrije gebieden en een aantal doorgangsverboden (de knippen).
+","5 maand voor niet-overtredingen, 5 jaar voor overtredingen",Ja,Mobiliteitsbedrijf Stad Gent,Meer over de dataverwerking,https://verwerkingsregister.stad.gent/verwerking/ea13d3f8-e79a-e811-80dd-adca587e5ac2
+Camera,Nummerplaatherkenning,Toegangscontrole autovrij gebied - Drabstraat,51.055350,3.718790,"In het kader van het circulatieplan controleren slimme camera’s de autonummerplaten. Dit in de autovrije gebieden en een aantal doorgangsverboden (de knippen).
+","5 maand voor niet-overtredingen, 5 jaar voor overtredingen",Ja,Mobiliteitsbedrijf Stad Gent,Meer over de dataverwerking,https://verwerkingsregister.stad.gent/verwerking/ea13d3f8-e79a-e811-80dd-adca587e5ac2
 ```
 > The `Device` class that gets used internally, additional fields in your api or csv will also be added to this class upon creation. 
 
@@ -86,7 +88,7 @@ class Device {
     personalData,
     category,
     type,
-    dataowner,
+    contactorg,
     dataprocessing,
     link,
     retention,
@@ -111,7 +113,25 @@ latitude: 51.057832
 }
 ```
 
-![example marker card](https://i.imgur.com/lh24Ayc.png)
+## The Leaflet Marker
+
+The card marker component found at `src/container/LeafletMarker/index.js`. You can customize the values that are shown in the marker in the ender function. If a value is not present in the data of device. Either undefined or null the label is not shown. If the device has a populated field `device.linklabel`. the default linklabel will be overwritten but that value. 
+```javascript
+  const dataProcessingLabel = t('dataprocessing')
+  const personalDataLabel = t('personaldata')
+  const retentionLabel = t('retention')
+  const contactLabel = t('contactorg')
+  const linkLabel = t('linkLabel')
+```
+```html
+    <TextBlock label={dataProcessingLabel} content={device.dataprocessing} />
+    <TextBlock label={personalDataLabel} content={device.personalData} />
+    <TextBlock label={retentionLabel} content={device.retention} />
+    <TextBlock label={contactLabel} content={device.contactorg} />
+    <LinkBlock device={device} linkLabel={linkLabel} />
+```
+
+![example marker card](https://i.imgur.com/6znzK1G.png)
 
 ## The MapLegend
 

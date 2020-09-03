@@ -12,10 +12,11 @@ export default class Device {
     personalData,
     category,
     type,
-    dataowner,
+    contactorg,
     dataprocessing,
     link,
     retention,
+    linklabel,
     latitude,
     longitude
   ) {
@@ -24,10 +25,11 @@ export default class Device {
     this.personalData = personalData
     this.category = category
     this.type = type
-    this.dataowner = dataowner
+    this.contactorg = contactorg
     this.dataprocessing = dataprocessing
     this.link = link
     this.retention = retention
+    this.linklabel = linklabel
     this.latitude = parseGeoLoc(latitude)
     this.longitude = parseGeoLoc(longitude)
   }

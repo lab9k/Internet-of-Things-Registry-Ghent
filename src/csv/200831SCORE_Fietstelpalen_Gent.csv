@@ -1,0 +1,6 @@
+title,category,type,dataowner,dataprocessing,latitude,longitude,linkLabel
+Fietsteller Groendreef,Slimme Verkeersinformatie,Fietstelpaal,Stad Gent,Telt passerende fietsers in Groendreef - thv huisnummer 119 (Fietsmeetnet Gent),51.064868,3.70034,"Test linklabel"
+Fietsteller Gandastraat,Slimme Verkeersinformatie,Fietstelpaal,Stad Gent,Telt passerende fietsers in Gandastraat - thv huisnummer 12 (Fietsmeetnet Gent),51.05388,3.738919,"Test linklabel"
+Fietsteller Zuidparklaan,Slimme Verkeersinformatie,Fietstelpaal,Stad Gent,Telt passerende fietsers in Zuidparklaan (Fietsmeetnet Gent),51.039698,3.736292,"Test linklabel"
+Fietsteller Bataviabrug,Slimme Verkeersinformatie,Fietstelpaal,Stad Gent,Telt passerende fietsers op de Bataviabrug - zonder display - thv Stapelplein 7 (Fietsmeetnet Gent),51.064614,3.734975,"Test linklabel"
+Fietsteller Dampoort,Slimme Verkeersinformatie,Fietstelpaal,Stad Gent,Telt passerende fietsers ter hoogte van Dampoort Zuid - zonder display - thv Antwerpenplein 14 (Fietsmeetnet Gent),51.056987,3.740393,"Test linklabel"

@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { getTypeMarker } from '../../services/api/marker'
 import Device from '../../services/classes/Device';
 import TextBlock from './textBlock';
+import LinkBlock from './linkBlock';
 
 export const createIcon = (category, type) => new L.Icon({
   ...getTypeMarker(category, type)
@@ -18,8 +19,9 @@ function LMarker(props) {
   const dataProcessingLabel = t('dataprocessing')
   const personalDataLabel = t('personaldata')
   const retentionLabel = t('retention')
-  const contactLabel = t('datacontactorg')
+  const contactLabel = t('contactorg')
   const linkLabel = t('linkLabel')
+
   return (
     <Card>
       <div className="card-body">
@@ -44,10 +46,8 @@ function LMarker(props) {
           <TextBlock label={dataProcessingLabel} content={device.dataprocessing} />
           <TextBlock label={personalDataLabel} content={device.personalData} />
           <TextBlock label={retentionLabel} content={device.retention} />
-          <TextBlock label={contactLabel} content={device.dataowner} />
-          <a className="card-link mt-2" href={device.link}>
-            {linkLabel}
-          </a>
+          <TextBlock label={contactLabel} content={device.contactorg} />
+          <LinkBlock device={device} linkLabel={linkLabel} />
         </div>
       </div>
     </Card>
