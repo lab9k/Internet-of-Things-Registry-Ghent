@@ -1,6 +1,7 @@
 import React from 'react'
 import { Map } from 'react-leaflet'
 import WMTSTileLayer from 'react-leaflet-wmts'
+import { trackPromise } from 'react-promise-tracker';
 import getDevices from '../../services/api/iot'
 
 import MapLegend from '../MapLegend'
@@ -15,7 +16,6 @@ import Type from './Type'
 import LocateControl from '../locationControl'
 import MarkerCluster from '../MarkerCluster'
 import AboutButton from './AboutButton';
-import { trackPromise } from 'react-promise-tracker';
 
 class LMap extends React.Component {
   static makeCategory(t) {
