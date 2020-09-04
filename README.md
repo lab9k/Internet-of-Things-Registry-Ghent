@@ -1,6 +1,16 @@
-## What is the IoT registry
+# About this project
 
-## What is Score
+## What is the IoT Registry?
+
+ The IoT Registry offers transparency to citizens, visitors and entrepreneurs by providing an online registry of IoT devices. 
+ [Learn more](https://northsearegion.eu/score/score-solutions/the-iot-registry/)
+
+## What is SCORE?
+
+This application is developed part of the SCORE project (Smart Cities + Open Data Re-use). SCORE aims to increase efficiency and quality of public services in cities through smart and open data-driven solutions. The SCORE partners develop innovative solutions based on open data. We focus on sharing insights and methodologies for developing better public services.
+[Learn more](https://northsearegion.eu/score/) 
+
+# React bootstrapping
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). It is based on a previous repository that was bootstrapped with [React Boilerplate](https://github.com/react-boilerplate/react-boilerplate). We decided to change to a different bootstrapping platform for a multitude of reasons. With the main ones being webpack build size, security vulnerabilities and ease of updating.
 
@@ -46,28 +56,28 @@ This is a parameter that gets added to the end of the suggestion Search string t
 
 ## The CSV files
 
-> During development we found you often had data that wasn't hosted on an API but was only available in excelsheets. So we added a feature that lets you add static csv files that will be loaded alongside the API.
+> During development we found you often had data that wasn't hosted on an API but was only available in Excel sheets. So we added a feature that lets you add static csv files that will be loaded alongside the API sources.
 
 ### Structure of the csv file
 
-Your CSV file can contain as many `headers` as you want. But only these headers will be displayed by default. If a `header` is missing, it's field won't be displayed in the marker card(see image below).
+Your CSV file can contain as many `headers` as you want. But only the following headers will be displayed by default. If a `header` is missing, its field won't be displayed in the marker card (see image below).
 
 * title
 * category
-    * this will be the category on the left
+    * This will be the category on the left.
 * type
-    * this specifies the catergory displayed on the right, Both category and type are also used for the filtering in the `legend` component.
+    * This specifies the catergory displayed on the right. Both category and type are also used for the filtering in the `legend` component.
 * dataprocessing
 * retention
 * datacontactorg
 * link
 * latitude
-    * The application is smart enough to handle the conversion from excel to csv. For example if the latitude value gets changed to `"51,367,895"` it will automatically be converted to `51.367.895`
+    * The application is smart enough to handle the conversion from excel to csv. For example if the latitude value gets changed to `"51,367,895"` it will automatically be converted to `51.367895`
 * longitude
 
 ### Adding new csv files
 
-adding csv files is very easy, just add a new file that has the correct headers(not case sensitive) to the folder `src/csv`. The application automatically loads all files in this folder.
+Adding csv files is very easy, just add a new file that has the correct headers (not case sensitive) to the folder `src/csv`. The application automatically loads all files in this folder.
 
 > An excerpt of the ANPR camera csv that is formatted correctly.
 
@@ -107,7 +117,6 @@ type: "Meteo",
 dataowner: "Stad Gent - Dienst Data & Informatie",
 dataprocessing: "Real-time (5min) data van de verschillende Monitoring Stations verspreid in en rond Gent. Deze Monitoring stations zijn geplaatst in het kader van het Europese MUV project.",
 link: "https://data.stad.gent/explore/dataset/real-time-data-muv-monitoring-stations-recentste-waarde/information/",
-retention: "2 weken",
 longitude: 3.751784,
 latitude: 51.057832
 }
@@ -115,7 +124,8 @@ latitude: 51.057832
 
 ## The Leaflet Marker
 
-The card marker component found at `src/container/LeafletMarker/index.js`. You can customize the values that are shown in the marker in the ender function. If a value is not present in the data of device. Either undefined or null the label is not shown. If the device has a populated field `device.linklabel`. the default linklabel will be overwritten but that value. 
+The card marker component can be found at `src/container/LeafletMarker/index.js`. You can customize the values that are shown in the marker in the render function. If a value is not present in the data of the device, either undefined or null, the label is not shown. If the device has a populated field `device.linklabel` the default linklabel will be overwritten but that value. 
+
 ```javascript
   const dataProcessingLabel = t('dataprocessing')
   const personalDataLabel = t('personaldata')
@@ -135,9 +145,9 @@ The card marker component found at `src/container/LeafletMarker/index.js`. You c
 
 ## The MapLegend
 
-> This component shows all the categories and it's respective type, if a custom type icon exists it will use it here and on the map(refer to the icon section for more information about icons). Clicking the category will hide the types.
+> This component shows all the categories and their respective types, if a custom type icon exists it will be used here and on the map as marker (refer to the icon section for more information about icons). Clicking the category will hide the types.
 
-This list is generated based on the `category` and `type` fields of the `Device` class. The icons are linked by the the `getTypeMarker` found in `src/services/api/marker.js` . Changing the value of category or type in the API will also update it here
+This list is generated based on the `category` and `type` fields of the `Device` class. The icons are linked by the the `getTypeMarker` found in `src/services/api/marker.js` . Changing the value of category or type in the API will also update it here.
 
 ![example legend](https://i.imgur.com/02L8Up4.png)
 
@@ -212,8 +222,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
+<img src="https://northsearegion.eu/media/5193/score-02a-colour.png" width="400" /> 
 
-![score](https://static.wixstatic.com/media/8ab344_cf7c439fe32e43b4b21d15f52577d287~mv2.png/v1/fill/w_375,h_149,al_c,lg_1,q_85/score-02a-colour-small_edited.webp) 
-
-SCORE is a project co-funded by the Interreg
-North Sea Region Programme 2014-2020.
+SCORE is a project co-funded by the Interreg North Sea Region Programme 2014-2020.
