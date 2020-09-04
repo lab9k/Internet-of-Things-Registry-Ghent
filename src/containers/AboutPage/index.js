@@ -69,15 +69,13 @@ export default function AboutPage() {
             De eerste versie van het slimme apparaten register is ontwikkeld in Amsterdam.
             Je vind een screenshot hieronder en je kan het ook
             {' '}
-            <a href="https://slimmeapparaten.amsterdam.nl/">online raadplegen. </a>
+            <a href="https://slimmeapparaten.amsterdam.nl/">online raadplegen</a>. 
             Je vindt er de locatie van camera's, camera toezichtsgebieden, sensoren,
             beacons en slimme verkeersinformatie in Amsterdam.
           </p>
           <img alt="iot van antwerpen" className="img-fluid mt-4 mb-4" src="https://static.wixstatic.com/media/8ab344_9ff02fcfc27a4c57bd51c4b1d6fac717~mv2.png/v1/fill/w_688,h_524,al_c,q_90,usm_0.66_1.00_0.01/IOTRegistryAmsterdam.webp" />
           <p>
-            Zowel de steden Gent als Aarhus (Denemarken) werkten aan een zogenaamde "replicatie" van de programmeercode hiervan op basis van de software die Amsterdam open source deelt. Dit wil zeggen dat deze steden dezelfde tool in de eigen stad opzetten. Daarvoor was een eerste stap nodig: het verder generiek maken van de software die in Amsterdam was ontwikkeld. De software moest worden klaargemaakt om het project te kunnen herhalen in andere steden. Over dit traject lees je alles in het
-            <a href="https://8ab344e0-bce9-44b0-b7e7-fbc2f2ef4a0e.usrfiles.com/ugd/8ab344_3afdd5a07b4e46058557e321a69c938a.pdf">verslag van de SCORE Developer Sprint</a>
-            dat we samen met de collega's in Amsterdam maakten. In de zomer van 2019 werkten twee Foresight teamleden gedurende enkele dagen hieraan mee.
+            Zowel de steden Gent als Aarhus (Denemarken) werkten aan een zogenaamde "replicatie" van de programmeercode hiervan op basis van de software die Amsterdam open source deelt. Dit wil zeggen dat deze steden dezelfde tool in de eigen stad opzetten. Daarvoor was een eerste stap nodig: het verder generiek maken van de software die in Amsterdam was ontwikkeld. De software moest worden klaargemaakt om het project te kunnen herhalen in andere steden. Over dit traject lees je alles in het <a href="https://8ab344e0-bce9-44b0-b7e7-fbc2f2ef4a0e.usrfiles.com/ugd/8ab344_3afdd5a07b4e46058557e321a69c938a.pdf">verslag van de SCORE Developer Sprint</a> dat we samen met de collega's in Amsterdam maakten. In de zomer van 2019 werkten twee Foresight teamleden gedurende enkele dagen hieraan mee.
           </p>
           <h3>Meer informatie</h3>
           <ul>
@@ -90,18 +88,20 @@ export default function AboutPage() {
               <li>Onderzoekscentra: Amsterdam Data Science, Johanneberg Science Park, Universiteit van Aarhus, University of Bradford</li>
               <li>Technologische partners: Digipolis</li>
             </ul>
-
-            <li>Projectwebsite SCORE (Engelstalig)</li>
+            <li>Meer info:</li>
+            <ul>
+              <li><a href="https://foresight.gent/score">Meer informatie over SCORE</a> (Nederlands)</li>
+              <li><a href="https://northsearegion.eu/score">Project website SCORE</a> (English)</li>
+            </ul>
           </ul>
           <div className="row">
             <div className="col">
-              <img alt="score" className="img-fluid" src="https://static.wixstatic.com/media/8ab344_cf7c439fe32e43b4b21d15f52577d287~mv2.png/v1/fill/w_250,h_99,al_c,q_85,usm_0.66_1.00_0.01/score-02a-colour-small_edited.webp" />
+              <img alt="score" className="img-fluid" src="https://northsearegion.eu/media/5193/score-02a-colour.png" />
             </div>
             <div className="col">
               <p>
                 <i>
-                  SCORE is a project co-funded by the Interreg
-                  North Sea Region Programme 2014-2020.
+                  SCORE is a project co-funded by the Interreg North Sea Region Programme 2014-2020.
                 </i>
               </p>
             </div>
