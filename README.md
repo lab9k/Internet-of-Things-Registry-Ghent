@@ -1,6 +1,16 @@
-## What is the IoT registry
+# About this project
 
-## What is Score
+## What is the IoT Registry?
+
+ The IoT Registry offers transparency to citizens, visitors and entrepreneurs by providing an online registry of IoT devices. 
+ [Learn more](https://northsearegion.eu/score/score-solutions/the-iot-registry/)
+
+## What is SCORE?
+
+This application is developed part of the SCORE project (Smart Cities + Open Data Re-use). SCORE aims to increase efficiency and quality of public services in cities through smart and open data-driven solutions. The SCORE partners develop innovative solutions based on open data. We focus on sharing insights and methodologies for developing better public services.
+[Learn more](https://northsearegion.eu/score/) 
+
+# React bootstrapping
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). It is based on a previous repository that was bootstrapped with [React Boilerplate](https://github.com/react-boilerplate/react-boilerplate). We decided to change to a different bootstrapping platform for a multitude of reasons. With the main ones being webpack build size, security vulnerabilities and ease of updating.
 
