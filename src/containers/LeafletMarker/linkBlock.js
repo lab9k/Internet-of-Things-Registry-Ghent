@@ -8,15 +8,19 @@ export default function LinkBlock(props) {
   }
   if (deviceLinkLabel === undefined) {
     return (
-      <a className="card-link mt-2" href={deviceLink}>
-        {alternativeLinkLabel}
-      </a>
+      <div className="card-link pb-1 pl-1 pr-1 pt-2">
+        <a className="" href={deviceLink}>
+          {alternativeLinkLabel}
+        </a>
+      </div>
     )
   }
   return (
-    <a className="card-link mt-2" href={deviceLink}>
-      {deviceLinkLabel}
-    </a>
+    <div className="card-link pb-1 pl-1 pr-1 pt-2">
+      <a className="" href={deviceLink}>
+        {deviceLinkLabel}
+      </a>
+    </div>
   )
 }
 

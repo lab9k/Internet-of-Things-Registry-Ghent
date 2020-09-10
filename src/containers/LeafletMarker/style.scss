@@ -6,12 +6,14 @@
 .card-body {
   padding: 5px;
 }
+/*
 .leaflet-popup{
 
 }
 .leaflet-popup-content-wrapper{
 
 }
+*/
 .leaflet-popup-content {
   margin: 0;
   width: unset;
@@ -49,4 +51,22 @@
   //    }
   //  }
   //}
+}
+
+.leaflet-popup-content h5 {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.leaflet-popup-content h6 {
+  line-height-step: 1rem;
+}
+.leaflet-popup-content div.col, .leaflet-popup-content p {
+  font-size: 0.87rem;
+  line-height: 1.15rem;
+}
+.leaflet-popup-content .card-category-type {
+  font-size: 1rem;
+}
+.leaflet-popup-content .card-category-type span {
+  white-space: nowrap; 
 }
