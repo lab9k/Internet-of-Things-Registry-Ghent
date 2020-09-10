@@ -25,23 +25,14 @@ function LMarker(props) {
   return (
     <Card>
       <div className="card-body">
-        <div className="card-title border-bottom mb-1">
+        <div className="card-title border-bottom pl-1 pr-1 mb-0">
           <h5>
-            <b>{device.title}</b>
+            {device.title}
           </h5>
         </div>
         <div className="col px-0">
-          <div className="row pb-0 border-bottom">
-            <div className="col">
-              <h5>
-                <i>{device.category}</i>
-              </h5>
-            </div>
-            <div className="col">
-              <h5>
-                <i>{device.type}</i>
-              </h5>
-            </div>
+          <div className="card-category-type text-muted border-bottom pb-2 pl-1 pr-1 pt-2">
+            {device.category} <span>&rsaquo; {device.type}</span>
           </div>
           <TextBlock label={dataProcessingLabel} content={device.dataprocessing} />
           <TextBlock label={personalDataLabel} content={device.personalData} />
