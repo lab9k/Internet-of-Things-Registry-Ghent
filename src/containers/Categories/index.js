@@ -3,7 +3,7 @@ import getTypeDivs from '../Types'
 import Checkbox from '../Checkbox'
 import { getMarker } from '../../services/api/marker'
 
-function getCategoryDivs(category, id, onCategoryToggle, onTypeToggle) {
+function getCategoryDivs(category, id, onCategoryToggle, onTypeToggle, onVisibleToggle) {
   return (
     <div key={category.name} className="col category_row">
       <div className="row" style={{ cursor: 'pointer' }}>
@@ -16,8 +16,8 @@ function getCategoryDivs(category, id, onCategoryToggle, onTypeToggle) {
           style={{ outline: 'none' }}
           tabIndex={0}
           role="menuitem"
-          onClick={() => this.props.onVisibleToggle(id)}
-          onKeyDown={() => this.props.onVisibleToggle(id)}
+          onClick={() => onVisibleToggle(id)}
+          onKeyDown={() => onVisibleToggle(id)}
         >
           <span className="map-legend__icon">
             <img

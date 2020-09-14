@@ -32,7 +32,12 @@ function LMarker(props) {
         </div>
         <div className="col px-0">
           <div className="card-category-type text-muted border-bottom pb-2 pl-1 pr-1 pt-2">
-            {device.category} <span>&rsaquo; {device.type}</span>
+            {device.category}
+            {' '}
+            <span>
+              &rsaquo;
+              {device.type}
+            </span>
           </div>
           <TextBlock label={dataProcessingLabel} content={device.dataprocessing} />
           <TextBlock label={personalDataLabel} content={device.personalData} />

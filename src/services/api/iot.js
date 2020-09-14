@@ -50,9 +50,8 @@ export default async function getDevices() {
   const csvPromises = getCSVPromises(importAll(require.context('../../csv', false, /\.(csv)$/)))
   const devicePromises = readPaginatedData(process.env.REACT_APP_API_ROOT)
   const devices = []
-  // await all the promises asynchronous and save in devices
-  await Promise.all([...csvPromises, devicePromises]).then((c) => devices.push(c))
-  // flatmaps and makes all keys uniform, does not use immutable data
+  await Promise.all([...csvPromises, devicePromises])
+    .then((c) => devices.push(c))
   devices
     .flat(2)
     .forEach((c) => classes.push(Object.assign(new Device(), c, { id: randomID(15) })))

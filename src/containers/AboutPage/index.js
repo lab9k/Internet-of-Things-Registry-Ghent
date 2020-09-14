@@ -1,6 +1,8 @@
 /* eslint-disable */
 import React from 'react'
 import logo from '../../icons/logo--cyan.svg'
+import { Link } from 'react-router-dom';
+import { ReactComponent as Close } from '../../icons/close.svg'
 
 export default function AboutPage() {
   return (
@@ -8,15 +10,22 @@ export default function AboutPage() {
     <div className="container">
       <div className="row mt-5">
         <div className="col-2">
-          <img alt="logo stad gent" src={logo} />
+          <Link to="/">
+            <img alt="logo stad gent" src={logo} />
+          </Link>
         </div>
-        <div className="col-8">
+        <div className="col-7">
           <h1 className="pt-3">Slimme apparaten register</h1>
           <h4>
             Toegankelijke en transparante informatie voor burgers,
             bezoekers en ondernemers over alle smart city sensoren en hun data.
             Een open source basissysteem met alle nodige tools om te starten.
           </h4>
+        </div>
+        <div className="col-1">
+          <Link to="/">
+            <Close />
+          </Link>
         </div>
       </div>
       <div className="row">
@@ -69,7 +78,7 @@ export default function AboutPage() {
             De eerste versie van het slimme apparaten register is ontwikkeld in Amsterdam.
             Je vind een screenshot hieronder en je kan het ook
             {' '}
-            <a href="https://slimmeapparaten.amsterdam.nl/">online raadplegen</a>. 
+            <a href="https://slimmeapparaten.amsterdam.nl/">online raadplegen</a>.
             Je vindt er de locatie van camera's, camera toezichtsgebieden, sensoren,
             beacons en slimme verkeersinformatie in Amsterdam.
           </p>

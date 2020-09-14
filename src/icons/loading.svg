@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" style="margin: auto; background: rgb(241, 242, 243); display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+<rect x="19" y="19" width="20" height="20" fill="#93dbe9">
+  <animate attributeName="fill" values="#689cc5;#93dbe9;#93dbe9" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0s"/>
+</rect><rect x="40" y="19" width="20" height="20" fill="#93dbe9">
+  <animate attributeName="fill" values="#689cc5;#93dbe9;#93dbe9" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0.125s"/>
+</rect><rect x="61" y="19" width="20" height="20" fill="#93dbe9">
+  <animate attributeName="fill" values="#689cc5;#93dbe9;#93dbe9" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0.25s"/>
+</rect><rect x="19" y="40" width="20" height="20" fill="#93dbe9">
+  <animate attributeName="fill" values="#689cc5;#93dbe9;#93dbe9" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0.875s"/>
+</rect><rect x="61" y="40" width="20" height="20" fill="#93dbe9">
+  <animate attributeName="fill" values="#689cc5;#93dbe9;#93dbe9" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0.375s"/>
+</rect><rect x="19" y="61" width="20" height="20" fill="#93dbe9">
+  <animate attributeName="fill" values="#689cc5;#93dbe9;#93dbe9" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0.75s"/>
+</rect><rect x="40" y="61" width="20" height="20" fill="#93dbe9">
+  <animate attributeName="fill" values="#689cc5;#93dbe9;#93dbe9" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0.625s"/>
+</rect><rect x="61" y="61" width="20" height="20" fill="#93dbe9">
+  <animate attributeName="fill" values="#689cc5;#93dbe9;#93dbe9" keyTimes="0;0.125;1" dur="1s" repeatCount="indefinite" begin="0.5s"/>
+</rect>
+</svg>

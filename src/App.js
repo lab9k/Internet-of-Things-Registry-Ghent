@@ -9,12 +9,16 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import LeafletMap from './containers/LeafletMap/index'
 import AboutPage from './containers/AboutPage';
+import LoadingSpinnerComponent from './containers/LeafletMap/loadingSpinner'
 
 export default function App() {
   return (
     <Router>
       <Route path="/about" component={AboutPage} />
-      <Route path="/" exact component={LeafletMap} />
+      <Route exact path="/">
+        <LeafletMap />
+        <LoadingSpinnerComponent />
+      </Route>
     </Router>
   )
 }

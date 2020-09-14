@@ -20,7 +20,8 @@ function MapLegend(props) {
     category,
     id,
     props.onCategoryToggle,
-    props.onTypeToggle
+    props.onTypeToggle,
+    props.onVisibleToggle
   ))
   return (
     <section
@@ -50,7 +51,8 @@ function MapLegend(props) {
 MapLegend.propTypes = {
   categories: PropTypes.arrayOf(Device).isRequired,
   onCategoryToggle: PropTypes.func.isRequired,
-  onTypeToggle: PropTypes.func.isRequired
+  onTypeToggle: PropTypes.func.isRequired,
+  onVisibleToggle: PropTypes.func.isRequired
 }
 
 export default MapLegend
