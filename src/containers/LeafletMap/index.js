@@ -85,6 +85,8 @@ class LMap extends React.Component {
         tax[d.category].types.push(new Type(d.type))
       }
     })
+    // disable deelfietsen on first load
+    tax.Deelmobiliteit.types.filter((t) => t.name === 'Deelfietsen')[0].enabled = false;
     this.setState({ categories: tax })
   }
 
