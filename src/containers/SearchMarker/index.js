@@ -6,7 +6,7 @@ import { getMarker } from '../../services/api/marker'
 
 const createIcon = () => {
   const marker = getMarker('marker')
-  marker.iconSize = [50, 50]
+  marker.iconSize = [20, 20]
   return new L.Icon({
     ...marker
   })
