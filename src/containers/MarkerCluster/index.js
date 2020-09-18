@@ -2,13 +2,16 @@ import { useEffect } from 'react'
 import L from 'leaflet'
 import 'leaflet.markercluster/dist/leaflet.markercluster'
 import 'leaflet.markercluster/dist/MarkerCluster.css'
-import 'leaflet.markercluster/dist/MarkerCluster.Default.css'
+import './style.scss'
 import { useLeaflet } from 'react-leaflet'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { createIcon } from '../LeafletMarker'
 // if you want to customize cluster behavior
 // https://github.com/Leaflet/Leaflet.markercluster#options
-const mcg = L.markerClusterGroup()
+const mcg = L.markerClusterGroup({
+  disableClusteringAtZoom: 16,
+  spiderfyOnMaxZoom: false
+})
 
 const MarkerCluster = ({ markers }) => {
   const { map } = useLeaflet()
