@@ -8,6 +8,7 @@ import { getTypeMarker } from '../../services/api/marker'
 import Device from '../../services/classes/Device';
 import TextBlock from './textBlock';
 import LinkBlock from './linkBlock';
+import tooltips from './tooltips.json';
 
 export const createIcon = (category, type) => new L.Icon({
   ...getTypeMarker(category, type)
@@ -39,10 +40,26 @@ function LMarker(props) {
               {device.type}
             </span>
           </div>
-          <TextBlock label={dataProcessingLabel} content={device.dataprocessing} />
-          <TextBlock label={personalDataLabel} content={device.personalData} />
-          <TextBlock label={retentionLabel} content={device.retention} />
-          <TextBlock label={contactLabel} content={device.contactorg} />
+          <TextBlock
+            label={dataProcessingLabel}
+            content={device.dataprocessing}
+            tooltip={tooltips.dataprocessing}
+          />
+          <TextBlock
+            label={personalDataLabel}
+            content={device.personalData}
+            tooltip={tooltips.personaldata}
+          />
+          <TextBlock
+            label={retentionLabel}
+            content={device.retention}
+            tooltip={tooltips.retention}
+          />
+          <TextBlock
+            label={contactLabel}
+            content={device.contactorg}
+            tooltip={tooltips.contactorg}
+          />
           <LinkBlock
             deviceLink={device.link}
             deviceLinkLabel={device.linklabel}
