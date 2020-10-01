@@ -1,11 +1,11 @@
 {
   "about": "Over dit register",
-  "datacontactorg": "Contacteer",
-  "dataprocessing": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  "personaldata": "Persoonsgegevens",
-  "retention": "Bewaartermijn",
+  "datacontactorg": "Organisatie (of stadsdienst) bij wie je terecht kan met vragen over de dataverwerking van dit apparaat",
+  "dataprocessing": "Hier beschrijven we welke gegevens dit apparaat verwerkt en hoe",
+  "personaldata": "Worden er door middel van dit apparaat persoonlijke gegevens verwerkt?",
+  "retention": "Hoe lang worden de gegevens bewaard?",
   "linklabel": "Meer informatie",
   "devices": "Apparaten",
-  "contactorg": "Contact Organisatie",
-  "datalinklabel": "Link naar de open data"
+  "contactorg": "Organisatie (of stadsdienst) bij wie je terecht kan met vragen over dit apparaat",
+  "datalinklabel": "Naar de open data"
 }
