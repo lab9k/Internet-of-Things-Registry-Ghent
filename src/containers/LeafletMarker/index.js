@@ -37,6 +37,7 @@ function LMarker(props) {
             {' '}
             <span>
               &rsaquo;
+              {' '}
               {device.type}
             </span>
           </div>
