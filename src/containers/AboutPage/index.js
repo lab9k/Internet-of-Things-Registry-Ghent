@@ -22,7 +22,7 @@ export default function AboutPage() {
             Een open source basissysteem met alle nodige tools om te starten.
           </h4>
         </div>
-        <div className="col-1">
+        <div className="col-1 text-right d-none d-sm-block">
           <Link to="/">
             <Close />
           </Link>
